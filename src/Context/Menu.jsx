@@ -7,9 +7,11 @@ const Menu = () => {
   const controls = useContext(ControlContext);
 
   const [arrayLength, setArrayLength] = useState(5);
+  let width = screen.width;
   useEffect(() => {
-    console.log(controls.swapDelay);
-  }, [controls.disable]);
+    width = screen.width;
+    console.log(width);
+  }, [controls.disable, screen.width]);
 
   const rangeHandler = (e) => {
     e.preventDefault();
@@ -34,6 +36,45 @@ const Menu = () => {
     // e.preventDefault();
     controls.swapDelayFunc(!controls.swapDelay);
   };
+
+  const optionVeryLargeScreen = (
+    <>
+      <option value={5}>5</option>
+      <option value={10}>10</option>
+      <option value={20}>20</option>
+      <option value={25}>25</option>
+      <option value={30}>30</option>
+    </>
+  );
+
+  const optionLargeScreen = (
+    <>
+      <option value={5}>5</option>
+      <option value={10}>10</option>
+      <option value={15}>15</option>
+    </>
+  );
+
+  const optionMidScreen = (
+    <>
+      <option value={5}>5</option>
+      <option value={10}>10</option>
+      <option value={12}>12</option>
+    </>
+  );
+
+  const optionSmallScreen = (
+    <>
+      <option value={5}>5</option>
+      <option value={8}>8</option>
+    </>
+  );
+
+  const optionVerySmallScreen = (
+    <>
+      <option value={5}>5</option>
+    </>
+  );
 
   return (
     <div className="menu">
@@ -73,11 +114,11 @@ const Menu = () => {
               onChange={setArrLengthHandler}
               disabled={controls.disable}
             >
-              <option value={5}>5</option>
-              <option value={10}>10</option>
-              <option value={20}>20</option>
-              <option value={30}>30</option>
-              <option value={40}>40</option>
+              {width < 500 ? optionVerySmallScreen : ""}
+              {width > 500 && width < 600 ? optionSmallScreen : ""}
+              {width > 600 && width < 800 ? optionMidScreen : ""}
+              {width > 800 && width < 1000 ? optionLargeScreen : ""}
+              {width > 1000 ? optionVeryLargeScreen : ""}
             </select>
             {/* <label className="colored__label">
               <b> {controls.speed}</b>

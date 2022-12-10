@@ -36,10 +36,6 @@ const BarView = () => {
   };
 
   const swapElement = async (val) => {
-    console.log("from Swap Func", controls, "no and barArr");
-    console.log("swap");
-    console.log("from swapElement", controls.sortType);
-
     if (val === "Bubble Sort") {
       setDisableHandler(true);
 
@@ -59,7 +55,6 @@ const BarView = () => {
             let temp = newArr[i];
             newArr[i] = newArr[j];
             newArr[j] = temp;
-            console.log(controls.swapDelay, "from bubble 1st");
             controls.swapDelay ? await sleep(500) : null;
 
             controls.setArrControls((prev) => {
@@ -69,7 +64,6 @@ const BarView = () => {
                 disable: true,
               };
             });
-            console.log(controls.swapDelay, "from bubble 2nd");
             controls.swapDelay ? await sleep(500) : null;
           }
           controls.switchSwap(false);
