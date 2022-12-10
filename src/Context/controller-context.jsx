@@ -1,18 +1,4 @@
 import { createContext, useState } from "react";
-import { flushSync } from "react-dom";
-
-// const initalState = {
-//   arr: [],
-//   arrLength: 5,
-//   swap: false,
-//   generateArr: () => {},
-//   startSort: () => {},
-//   endSort: () => {},
-//   resetArr: () => {},
-//   sortType: "bubbleSort",
-//   rearIndex: 0,
-//   frontIndex: 1,
-// };
 
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -74,29 +60,21 @@ const ControlProvider = (props) => {
   };
 
   const switchSwapHandler = (val) => {
-    // setArrControls((prevState) => {});
-    // setArrControls({ ...arrControls, swap: val });
-    // flushSync(() => {
     setArrControls((prev) => {
       return { ...prev, swap: val };
     });
-    // });
   };
 
   const resetArrHandler = () => {
     setArrControls((prev) => {
       return { ...prev, arr: [], breakLoop: true };
     });
-    // setArrControls({ ...arrControls, arr: [], breakLoop: true });
   };
 
   const setArrLength = (val) => {
-    // flushSync(() => {
     setArrControls((prev) => {
       return { ...prev, arrLength: val };
     });
-    // });
-    // generateArrHandler();
   };
 
   const selectSortType = (val) => {
